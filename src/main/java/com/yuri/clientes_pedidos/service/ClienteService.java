@@ -43,4 +43,23 @@ public class ClienteService {
 
 		return clienteMapper.toResponseDto(clienteSalvo);
 	}
+
+	public ClienteResponseDto update(Long id, ClienteRequestDto clienteRequestDto) {
+		ClienteEntity cliente = clienteRepository.findById(id)
+				.orElseThrow(() -> new ClienteNaoEncontradoException("O cliente não foi encontrado"));
+		if (clienteRepository.existsByEmailAndIdNot(clienteRequestDto.email(), id)) {
+			throw new EmailDuplicadoException("Email já cadastrado");
+		}
+		clienteMapper.updateEntityFromDto(clienteRequestDto, cliente);
+
+		ClienteEntity clienteSalvo = clienteRepository.save(cliente);
+
+		return clienteMapper.toResponseDto(clienteSalvo);
+	}
+
+	public void deleteById(Long id) {
+		ClienteEntity cliente = clienteRepository.findById(id)
+				.orElseThrow(() -> new ClienteNaoEncontradoException("O cliente com ID " + id + " não foi encontrado"));
+		clienteRepository.delete(cliente);
+	}
 }

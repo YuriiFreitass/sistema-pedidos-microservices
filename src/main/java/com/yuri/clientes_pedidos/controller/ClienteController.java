@@ -34,4 +34,16 @@ public class ClienteController {
 	public ClienteResponseDto findById(@PathVariable Long id) {
 		return clienteService.findById(id);
 	}
+
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public ClienteResponseDto update(@PathVariable Long id, @Valid @RequestBody ClienteRequestDto clienteRequestDto) {
+		return clienteService.update(id, clienteRequestDto);
+	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Long id) {
+		clienteService.deleteById(id);
+	}
 }
