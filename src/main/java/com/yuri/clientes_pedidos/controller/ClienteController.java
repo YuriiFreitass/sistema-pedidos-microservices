@@ -5,6 +5,9 @@ import com.yuri.clientes_pedidos.dto.ClienteResponseDto;
 import com.yuri.clientes_pedidos.service.ClienteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Parameter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +22,8 @@ public class ClienteController {
 
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<ClienteResponseDto> findAll() {
-		return clienteService.findAll();
+	public Page<ClienteResponseDto> findAll(Pageable pageable) {
+		return clienteService.findAll(pageable);
 	}
 
 	@PostMapping

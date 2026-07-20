@@ -8,6 +8,8 @@ import com.yuri.clientes_pedidos.exception.EmailDuplicadoException;
 import com.yuri.clientes_pedidos.mapper.ClienteMapper;
 import com.yuri.clientes_pedidos.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +21,11 @@ public class ClienteService {
 	private final ClienteRepository clienteRepository;
 	private final ClienteMapper clienteMapper;
 
-	public List<ClienteResponseDto> findAll() {
-		return clienteRepository.findAll()
-				.stream()
-				.map(clienteMapper::toResponseDto)
-				.toList();
+	public Page<ClienteResponseDto> findAll(Pageable pageable) {
+		return clienteRepository.findAll(pageable)
+				.map(clienteMapper::toResponseDto);
+
+
 	}
 	public ClienteResponseDto findById(Long id) {
 		ClienteEntity cliente = clienteRepository.findById(id)
