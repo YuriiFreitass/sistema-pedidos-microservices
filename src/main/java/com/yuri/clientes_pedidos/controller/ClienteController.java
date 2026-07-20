@@ -3,6 +3,7 @@ package com.yuri.clientes_pedidos.controller;
 import com.yuri.clientes_pedidos.dto.ClienteRequestDto;
 import com.yuri.clientes_pedidos.dto.ClienteResponseDto;
 import com.yuri.clientes_pedidos.service.ClienteService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,14 @@ public class ClienteController {
 	}
 
 	@PostMapping
-	public ClienteResponseDto  save(@RequestBody ClienteRequestDto clienteRequestDto) {
+	@ResponseStatus(HttpStatus.CREATED)
+	public ClienteResponseDto  save(@Valid @RequestBody ClienteRequestDto clienteRequestDto) {
 		return clienteService.save(clienteRequestDto);
+	}
+
+	@GetMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public ClienteResponseDto findById(@PathVariable Long id) {
+		return clienteService.findById(id);
 	}
 }
