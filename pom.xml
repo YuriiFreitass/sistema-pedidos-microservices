@@ -17,7 +17,7 @@
 	<artifactId>clientes-pedidos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>clientes-pedidos</name>
+	<name>clientes-service</name>
 	<description>Microsserviço responsável pelo gerenciamento de clientes</description>
 
 	<properties>
@@ -28,6 +28,18 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-test</artifactId>
+				<scope>test</scope>
+		</dependency>
 
 		<!-- Spring MVC / API REST -->
 		<dependency>
