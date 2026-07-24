@@ -14,7 +14,7 @@
 	</parent>
 
 	<groupId>com.yuri</groupId>
-	<artifactId>clientes-pedidos</artifactId>
+	<artifactId>clientes-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>clientes-service</name>
@@ -36,9 +36,9 @@
 		</dependency>
 
 		<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-test</artifactId>
-				<scope>test</scope>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- Spring MVC / API REST -->
