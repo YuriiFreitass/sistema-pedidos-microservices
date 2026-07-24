@@ -109,7 +109,7 @@ Esses hashes são utilizados na configuração do usuário em memória do Spring
 ## 1. Clone o repositório
 
 ```bash
-git clone <https://github.com/YuriiFreitass/cliente-service>
+git clone https://github.com/YuriiFreitass/cliente-service
 ```
 
 ---
